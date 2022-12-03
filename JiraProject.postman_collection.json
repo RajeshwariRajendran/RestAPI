@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "d5653322-b4cc-4014-9052-e813ef3ac663",
+		"name": "JiraProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24510246"
+	},
+	"item": [
+		{
+			"name": "Create Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"Response = pm.response.json();\r",
+							"TaskID=Response.id;\r",
+							"pm.globals.set(\"G_Task\",TaskID);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n    \"project\":\r\n                {\r\n                    \"key\": \"TUK\"\r\n                },\r\n    \"summary\": \"create issue in RA project\",\r\n    \"description\": \"Creating of an issue using project keys and issue type names using the REST API\",\r\n    \"issuetype\": {\r\n                    \"name\": \"Task\"\r\n                }\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rajeapi1.atlassian.net/rest/api/2/issue/",
+					"protocol": "https",
+					"host": [
+						"rajeapi1",
+						"atlassian",
+						"net"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchTask",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Jira}}/rest/api/2/issue/{{G_Task}}",
+					"host": [
+						"{{Jira}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{G_Task}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateTask",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fields\": {\r\n\r\n        \"description\": \"Task creation Using REST API for testing\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Jira}}/rest/api/2/issue/{{G_Task}}",
+					"host": [
+						"{{Jira}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{G_Task}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteTask",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Jira}}/rest/api/2/issue/{{G_Task}}",
+					"host": [
+						"{{Jira}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issue",
+						"{{G_Task}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchAll Task",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Jira}}/rest/api/2/search?jql=project=Tukins",
+					"host": [
+						"{{Jira}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"search"
+					],
+					"query": [
+						{
+							"key": "jql",
+							"value": "project=Tukins"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListAllIssueTypes",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Jira}}/rest/api/2/issuetype",
+					"host": [
+						"{{Jira}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issuetype"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListSpecificIssueType",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "priyaraje6@gmail.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "pLOWYf8NTy8OGnAC2ojm6598",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Jira}}/rest/api/2/issuetype/10000",
+					"host": [
+						"{{Jira}}"
+					],
+					"path": [
+						"rest",
+						"api",
+						"2",
+						"issuetype",
+						"10000"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "priyaraje6@gmail.com",
+				"type": "string"
+			},
+			{
+				"key": "password",
+				"value": "pLOWYf8NTy8OGnAC2ojm6598",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
